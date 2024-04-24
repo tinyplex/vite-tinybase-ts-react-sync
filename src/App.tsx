@@ -51,7 +51,7 @@ export const App = () => {
     async (store: MergeableStore) =>
       await createWsSynchronizer(
         store,
-        new WebSocket('ws://api-tinybase-org.fly.dev' + location.pathname),
+        new WebSocket('ws://demo-tinybase-org.fly.dev' + location.pathname),
         1
       ),
     [],
