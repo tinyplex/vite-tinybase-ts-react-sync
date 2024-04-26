@@ -20,13 +20,19 @@ import {
 import { Buttons } from './Buttons';
 
 export const App = () => {
+  const roomName = location.pathname;
+
   const store = useCreateMergeableStore(() =>
     createMergeableStore('' + Math.random())
   );
 
   useCreatePersister(
     store,
-    (store) => createSessionPersister(store, 's'),
+    (store) =>
+      createSessionPersister(
+        store,
+        'local://vite.demo.tinybase.org' + roomName
+      ),
     [],
     async (persister) => {
       await persister.startAutoLoad([
@@ -51,7 +57,7 @@ export const App = () => {
     async (store: MergeableStore) =>
       await createWsSynchronizer(
         store,
-        new WebSocket('ws://demo-tinybase-org.fly.dev' + location.pathname),
+        new WebSocket('wss://vite.demo.tinybase.org' + roomName),
         1
       ),
     [],
