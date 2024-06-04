@@ -33,7 +33,7 @@ npm run dev
 
 5. Go the URL shown and enjoy!
 
-![](https://tinybase.org/vite-tinybase-2.png)
+![](https://beta.tinybase.org/vite-tinybase-sync.mov)
 
 ## Run your own server
 
