@@ -1,0 +1,17 @@
+{
+  "name": "vite-tinybase-ts-react-sync-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "author": "jamesgpearce",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "tinybase": "^5.0.0-beta.18",
+    "ws": "^8.17.0"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.7",
+    "@types/ws": "^8.5.10"
+  }
+}

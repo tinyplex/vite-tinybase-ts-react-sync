@@ -35,6 +35,22 @@ npm run dev
 
 ![](https://tinybase.org/vite-tinybase-2.png)
 
+## Run your own server
+
+This template uses a lightweight socket server on `vite.tinybase.org` to
+synchronize data between clients. This is fine for a demo but not intended as a
+production server for your apps!
+
+If you wish to run your own instance, see the `server` directory and start from
+there.
+
+The `vite.tinybase.org` server is hosted on fly.io and so if you choose to use
+that, you can reuse the docker and fly configurations in the server directory.
+Just remember to update them to match your machines and required configuration.
+
+You will also have to have your client communicate with the new server by
+configuring the `SERVER` constant at the top of the client's `App.tsx` file.
+
 ## Other templates
 
 There are eight templates for TinyBase, of which this is one:

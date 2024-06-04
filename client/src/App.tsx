@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';
+import React, { StrictMode } from 'react';
 import { createMergeableStore, MergeableStore } from 'tinybase/debug';
 import { createSessionPersister } from 'tinybase/debug/persisters/persister-browser';
 import { createWsSynchronizer } from 'tinybase/debug/synchronizers/synchronizer-ws-client';
@@ -15,6 +15,8 @@ import {
 } from 'tinybase/debug/ui-react-dom';
 import { Buttons } from './Buttons';
 
+const SERVER = 'vite.tinybase.org';
+
 export const App = () => {
   const serverPathId = location.pathname;
 
@@ -23,10 +25,7 @@ export const App = () => {
   useCreatePersister(
     store,
     (store) =>
-      createSessionPersister(
-        store,
-        'local://vite.demo.tinybase.org' + serverPathId
-      ),
+      createSessionPersister(store, 'local://' + SERVER + serverPathId),
     [],
     async (persister) => {
       await persister.startAutoLoad([
@@ -49,7 +48,7 @@ export const App = () => {
   useCreateSynchronizer(store, async (store: MergeableStore) => {
     const synchronizer = await createWsSynchronizer(
       store,
-      new WebSocket('wss://vite.demo.tinybase.org' + serverPathId),
+      new WebSocket('wss://' + SERVER + serverPathId),
       1
     );
     await synchronizer.startSync();
