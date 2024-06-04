@@ -1,9 +1,5 @@
 import { StrictMode } from 'react';
-import {
-  createMergeableStore,
-  MergeableStore,
-  Synchronizer,
-} from 'tinybase/debug';
+import { createMergeableStore, MergeableStore } from 'tinybase/debug';
 import { createSessionPersister } from 'tinybase/debug/persisters/persister-browser';
 import { createWsSynchronizer } from 'tinybase/debug/synchronizers/synchronizer-ws-client';
 import {
@@ -20,18 +16,16 @@ import {
 import { Buttons } from './Buttons';
 
 export const App = () => {
-  const roomName = location.pathname;
+  const serverPathId = location.pathname;
 
-  const store = useCreateMergeableStore(() =>
-    createMergeableStore('' + Math.random())
-  );
+  const store = useCreateMergeableStore(() => createMergeableStore());
 
   useCreatePersister(
     store,
     (store) =>
       createSessionPersister(
         store,
-        'local://vite.demo.tinybase.org' + roomName
+        'local://vite.demo.tinybase.org' + serverPathId
       ),
     [],
     async (persister) => {
@@ -52,23 +46,24 @@ export const App = () => {
     }
   );
 
-  useCreateSynchronizer(
-    store,
-    async (store: MergeableStore) =>
-      await createWsSynchronizer(
-        store,
-        new WebSocket('wss://vite.demo.tinybase.org' + roomName),
-        1
-      ),
-    [],
-    async (synchronizer: Synchronizer) => {
-      await synchronizer.startSync();
-    }
-  );
+  useCreateSynchronizer(store, async (store: MergeableStore) => {
+    const synchronizer = await createWsSynchronizer(
+      store,
+      new WebSocket('wss://vite.demo.tinybase.org' + serverPathId),
+      1
+    );
+    await synchronizer.startSync();
+    return synchronizer;
+  });
 
   return (
     <StrictMode>
       <Provider store={store}>
+        <p>
+          To demonstrate synchronization,{' '}
+          <a href={serverPathId}>open this exact URL</a> in multiple incognito
+          browser windows, or even other browsers altogether.
+        </p>
         <Buttons />
         <div>
           <h2>Values</h2>

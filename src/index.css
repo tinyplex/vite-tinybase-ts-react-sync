@@ -33,6 +33,15 @@ h2 {
   row-gap: 1rem;
 }
 
+p {
+  margin: 0;
+  color: #666;
+  text-align: center;
+  a {
+    color: unset;
+  }
+}
+
 #buttons {
   border: solid #666;
   border-width: 1px 0;
@@ -98,6 +107,9 @@ table.sortedTable thead th {
 @media (min-width: 40rem) {
   #app {
     grid-template-columns: 1fr 1fr;
+  }
+  p {
+    grid-column: span 2;
   }
   #buttons {
     grid-column: span 2;

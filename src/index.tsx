@@ -1,7 +1,14 @@
 import './index.css';
 import ReactDOM from 'react-dom/client';
+import { getUniqueId } from 'tinybase';
 import { App } from './App';
 
-addEventListener('load', () =>
-  ReactDOM.createRoot(document.getElementById('app')!).render(<App />)
-);
+addEventListener('load', () => {
+  const serverPathId = location.pathname;
+  if (serverPathId == '/') {
+    location.assign('/' + getUniqueId());
+    return;
+  }
+
+  ReactDOM.createRoot(document.getElementById('app')!).render(<App />);
+});
