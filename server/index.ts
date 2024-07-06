@@ -1,5 +1,5 @@
 import {createServer} from 'http';
-import {createWsServer} from 'tinybase/debug/synchronizers/synchronizer-ws-server';
+import {createWsServer} from 'tinybase/synchronizers/synchronizer-ws-server';
 import {WebSocketServer} from 'ws';
 
 const wsServer = createWsServer(new WebSocketServer({port: 8043}));

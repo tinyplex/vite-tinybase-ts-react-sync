@@ -1,18 +1,18 @@
 import React, { StrictMode } from 'react';
-import { createMergeableStore, MergeableStore } from 'tinybase/debug';
-import { createSessionPersister } from 'tinybase/debug/persisters/persister-browser';
-import { createWsSynchronizer } from 'tinybase/debug/synchronizers/synchronizer-ws-client';
+import { createMergeableStore, MergeableStore } from 'tinybase';
+import { createSessionPersister } from 'tinybase/persisters/persister-browser';
+import { createWsSynchronizer } from 'tinybase/synchronizers/synchronizer-ws-client';
 import {
   Provider,
   useCreateMergeableStore,
   useCreatePersister,
   useCreateSynchronizer,
-} from 'tinybase/debug/ui-react';
+} from 'tinybase/ui-react';
 import {
   SortedTableInHtmlTable,
-  StoreInspector,
   ValuesInHtmlTable,
-} from 'tinybase/debug/ui-react-dom';
+} from 'tinybase/ui-react-dom';
+import { Inspector } from 'tinybase/ui-react-inspector';
 import { Buttons } from './Buttons';
 
 const SERVER = 'vite.tinybase.org';
@@ -87,7 +87,7 @@ export const App = () => {
             className='sortedTable'
           />
         </div>
-        <StoreInspector />
+        <Inspector />
       </Provider>
     </StrictMode>
   );
