@@ -1,4 +1,5 @@
 import React, { StrictMode } from 'react';
+import ReconnectingWebSocket from 'reconnecting-websocket';
 import { createMergeableStore, MergeableStore } from 'tinybase';
 import { createSessionPersister } from 'tinybase/persisters/persister-browser';
 import { createWsSynchronizer } from 'tinybase/synchronizers/synchronizer-ws-client';
@@ -49,7 +50,7 @@ export const App = () => {
   useCreateSynchronizer(store, async (store: MergeableStore) => {
     const synchronizer = await createWsSynchronizer(
       store,
-      new WebSocket(SERVER_SCHEME + SERVER + serverPathId),
+      new ReconnectingWebSocket(SERVER_SCHEME + SERVER + serverPathId),
       1
     );
     await synchronizer.startSync();
