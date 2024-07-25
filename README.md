@@ -10,7 +10,7 @@ disparate browser windows.
 1. Make a copy of this template into a new directory:
 
 ```sh
-npx degit tinyplex/vite-tinybase-ts-react-sync my-tinybase-app
+npx tiged tinyplex/vite-tinybase-ts-react-sync my-tinybase-app
 ```
 
 2. Go into the client directory:
