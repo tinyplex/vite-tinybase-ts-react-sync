@@ -15,6 +15,7 @@ import {
 import { Inspector } from 'tinybase/ui-react-inspector';
 import { Buttons } from './Buttons';
 
+const SERVER_SCHEME = 'wss://';
 const SERVER = 'vite.tinybase.org';
 
 export const App = () => {
@@ -48,7 +49,7 @@ export const App = () => {
   useCreateSynchronizer(store, async (store: MergeableStore) => {
     const synchronizer = await createWsSynchronizer(
       store,
-      new WebSocket('wss://' + SERVER + serverPathId),
+      new WebSocket(SERVER_SCHEME + SERVER + serverPathId),
       1
     );
     await synchronizer.startSync();
