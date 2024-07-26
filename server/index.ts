@@ -9,7 +9,10 @@ import {WebSocketServer} from 'ws';
 const wsServer = createWsServer(
   new WebSocketServer({port: 8043}),
   // Something like this if you want to save Store state on the server:
-  // (pathId) => createFilePersister(createMergeableStore(), pathId + '.json'),
+  // (pathId) => createFilePersister(
+  //   createMergeableStore(),
+  //   pathId.replace(/[^a-zA-Z0-9]/g, '-') + '.json',
+  // ),
 );
 
 // -- Optional metrics handling hereon
