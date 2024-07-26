@@ -2,11 +2,19 @@ import {createServer} from 'http';
 import {createWsServer} from 'tinybase/synchronizers/synchronizer-ws-server';
 import {WebSocketServer} from 'ws';
 
-const wsServer = createWsServer(new WebSocketServer({port: 8043}));
-wsServer.addClientIdsListener(null, () => updatePeakStats());
+// Something like this if you want to save Store state on the server:
+// import {createMergeableStore} from 'tinybase';
+// import {createFilePersister} from 'tinybase/persisters/persister-file';
+
+const wsServer = createWsServer(
+  new WebSocketServer({port: 8043}),
+  // Something like this if you want to save Store state on the server:
+  // (pathId) => createFilePersister(createMergeableStore(), pathId + '.json'),
+);
 
 // -- Optional metrics handling hereon
 
+wsServer.addClientIdsListener(null, () => updatePeakStats());
 const stats = {paths: 0, clients: 0};
 
 createServer((request, response) => {
