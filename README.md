@@ -5,6 +5,8 @@ This is a [Vite](https://vitejs.dev/) template for a simple
 the TinyBase ui-react-dom module UI components, and also synchronizing between
 disparate browser windows.
 
+<img width="847" alt="image" src="https://github.com/user-attachments/assets/c63f2789-94dd-4fd3-a5eb-e929c7b4897c">
+
 ## Instructions
 
 1. Make a copy of this template into a new directory:
@@ -32,8 +34,6 @@ npm run dev
 ```
 
 5. Go the URL shown and enjoy!
-
-https://github.com/tinyplex/vite-tinybase-ts-react-sync/assets/90942/f7543aa3-199b-4d18-8588-551d08032da0
 
 ## Run your own server
 
