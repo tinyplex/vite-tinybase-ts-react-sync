@@ -60,11 +60,15 @@ export const App = () => {
   return (
     <StrictMode>
       <Provider store={store}>
-        <p>
+        <header>
+          <h1>
+            <img src='/favicon.svg' />
+            TinyBase & Synchronization
+          </h1>
           To demonstrate synchronization,{' '}
           <a href={serverPathId}>open this exact URL</a> in multiple incognito
           browser windows, or even other browsers altogether.
-        </p>
+        </header>
         <Buttons />
         <div>
           <h2>Values</h2>
@@ -79,14 +83,6 @@ export const App = () => {
             sortOnClick={true}
             className='sortedTable'
             paginator={true}
-          />
-          <h2>Species Table</h2>
-          <SortedTableInHtmlTable
-            tableId='species'
-            cellId='price'
-            descending={true}
-            sortOnClick={true}
-            className='sortedTable'
           />
         </div>
         <Inspector />
