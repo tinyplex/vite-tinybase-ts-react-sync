@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1
 ARG BUN_VERSION=1.1.3
 
-FROM oven/bun:${BUN_VERSION}-alpine as base
+FROM oven/bun:${BUN_VERSION}-alpine AS base
 LABEL fly_launch_runtime="Bun"
 WORKDIR /app
 ENV NODE_ENV="production"
