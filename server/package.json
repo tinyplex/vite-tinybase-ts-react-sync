@@ -7,11 +7,11 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
-    "tinybase": "^6.0.0",
-    "ws": "^8.18.1"
+    "tinybase": "^6.6.0",
+    "ws": "^8.18.3"
   },
   "devDependencies": {
-    "@flydotio/dockerfile": "^0.7.9",
-    "@types/ws": "^8.18.0"
+    "@flydotio/dockerfile": "^0.7.10",
+    "@types/ws": "^8.18.1"
   }
 }
